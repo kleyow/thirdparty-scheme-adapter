@@ -22,11 +22,14 @@
  - Name Surname <name.surname@gatesfoundation.com>
 
  - Paweł Marzec <pawel.marzec@modusbox.com>
+ - Kevin Leyow <kevin.leyow@modusbox.com>
 
  --------------
  ******/
 import Hello from './hello'
+import ThirdpartyRequestsTransactions from './thirdpartyRequests/transactions'
 
 export default {
-  HelloGet: Hello.get
+  HelloGet: Hello.get,
+  ThirdpartyRequestsTransactionsPost: ThirdpartyRequestsTransactions.post
 }

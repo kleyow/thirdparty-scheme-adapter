@@ -165,6 +165,7 @@ declare module '@mojaloop/central-services-shared' {
     ReturnCodes: {
       OK: ReturnCode;
       ACCEPTED: ReturnCode;
+      BADREQUEST: ReturnCode;
     };
     RestMethods: {
       GET: string;

@@ -54,7 +54,7 @@ services:
       retries: 10
       start_period: 10s
       interval: 30s
-  
+
   redis:
     container_name: redis
     image: "redis:5.0.4-alpine"
