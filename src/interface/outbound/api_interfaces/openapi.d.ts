@@ -25,6 +25,9 @@ export interface paths {
   "/thirdpartyRequests/transactions/{ID}/authorizations": {
     post: operations["VerifyThirdPartyAuthorization"];
   };
+  "/consentRequests/{ID}/validate": {
+    post: operations["ValidateConsentRequest"];
+  };
 }
 
 export interface operations {
@@ -146,6 +149,28 @@ export interface operations {
     };
     responses: {
       200: components["responses"]["ThirdpartyRequestsTransactionsIDAuthzResponse"];
+      400: components["responses"]["400"];
+      401: components["responses"]["401"];
+      403: components["responses"]["403"];
+      404: components["responses"]["404"];
+      405: components["responses"]["405"];
+      406: components["responses"]["406"];
+      501: components["responses"]["501"];
+      503: components["responses"]["503"];
+    };
+  };
+  /** The HTTP request `POST /consentRequests/{ID}/validate` is used to by a PISP to validate a OTP. */
+  ValidateConsentRequest: {
+    parameters: {
+      path: {
+        ID: components["parameters"]["ID"];
+      };
+    };
+    requestBody: {
+      "application/json": components["schemas"]["ConsentRequestValidateRequest"];
+    };
+    responses: {
+      200: components["responses"]["200"];
       400: components["responses"]["400"];
       401: components["responses"]["401"];
       403: components["responses"]["403"];
@@ -671,6 +696,9 @@ export interface components {
       sourceAccountId: components["schemas"]["AccountAddress"];
       /** The status of the authorization. This value must be `VERIFIED` for a PUT request. */
       status: "VERIFIED";
+    };
+    ConsentRequestValidateRequest: {
+      authToken: string;
     };
   };
   responses: {

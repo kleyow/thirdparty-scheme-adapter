@@ -253,6 +253,43 @@ paths:
           $ref: '#/components/responses/501'
         '503':
           $ref: '#/components/responses/503'
+  '/consentRequests/{ID}/validate':
+    post:
+      operationId: ValidateConsentRequest
+      summary: Validate a OTP with a dfsp
+      description: >
+        The HTTP request `POST /consentRequests/{ID}/validate` is used to by a
+        PISP to validate a OTP.
+      tags:
+        - thirdpartyRequests
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      requestBody:
+        description: Request body containing OTP code in authToken.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConsentRequestValidateRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '406':
+          $ref: '#/components/responses/406'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
 components:
   responses:
     '200':
@@ -1544,6 +1581,14 @@ components:
         - consentId
         - sourceAccountId
         - status
+    ConsentRequestValidateRequest:
+      title: ConsentRequestValidateRequest
+      type: object
+      properties:
+        authToken:
+          type: string
+      required:
+        - authToken
   parameters:
     ID:
       name: ID

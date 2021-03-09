@@ -1,0 +1,7 @@
+title: ConsentRequestValidateRequest
+type: object
+properties:
+  authToken:
+    type: string
+required:
+  - authToken
